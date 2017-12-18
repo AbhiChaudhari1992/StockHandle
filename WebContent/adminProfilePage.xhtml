@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+ <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+
+    </h:head>
+<h:body>
+<div>
+Records of manager are....
+</div>
+	
+<div>
+  
+<h:form> 
+ <div align="right">
+	           <h:commandButton class="btn btn-primary" value="Logout" action="#{adminBean.logout}"/>
+       </div>     
+
+    <h:dataTable value="#{adminBean.list}" var="admin">
+          
+         <h:column name = "ID"><h:inputText value="#{admin.uid}" />
+        <f:facet name = "header">ID</f:facet>   </h:column>  
+        <h:column name = "Name"><h:inputText value="#{admin.name}" />
+        <f:facet name = "header">Name</f:facet>   </h:column>
+         <h:column name = "Name"><h:inputText value="#{admin.email}" />
+         <f:facet name = "header">Email</f:facet>   </h:column>
+         <h:column>
+        <h:selectBooleanCheckbox value="#{adminBean.checked[admin.uid]}" 
+         />
+    </h:column>
+      
+    </h:dataTable>
+    <h:commandButton value="submit" action="#{adminBean.approveOrDeclineManager}" />
+</h:form>
+</div>
+</h:body>
+</html>
